@@ -1,0 +1,75 @@
+{
+  "project": "虚构吸热塔参数演示（非工程输入）",
+  "settings": {
+    "node_tolerance_mm": 0.01
+  },
+  "sheets": [
+    {
+      "name": "9米梁",
+      "role": "members",
+      "rows": [
+        {
+          "id": "DEMO-B01",
+          "level": 9,
+          "type": "演示梁",
+          "ni": "N01",
+          "xi": -5000,
+          "yi": 0,
+          "zi": 9000,
+          "nj": "N02",
+          "xj": 5000,
+          "yj": 0,
+          "zj": 9000,
+          "ci": "铰接",
+          "cj": "铰接",
+          "keep": "保留",
+          "status": "待核",
+          "note": "虚构CAD识别几何；截面待用户指定或软件导入"
+        }
+      ]
+    },
+    {
+      "name": "筒壁区段",
+      "role": "wall",
+      "rows": [
+        {
+          "id": "DEMO-W01",
+          "z0": 0,
+          "z1": 9000,
+          "r0": 5000,
+          "r1": 5000,
+          "t0": 300,
+          "t1": 300,
+          "material": "C40",
+          "status": "待核"
+        }
+      ]
+    },
+    {
+      "name": "核心筒柱",
+      "role": "core_column",
+      "rows": [
+        {
+          "id": "DEMO-C01",
+          "level": 9,
+          "x": 1000,
+          "y": 1000,
+          "z": 9000,
+          "status": "待核",
+          "note": "虚构柱位与柱顶；下端及截面待来源核实"
+        }
+      ]
+    },
+    {
+      "name": "来源记录",
+      "role": "trace",
+      "rows": [
+        {
+          "id": "DEMO-CAD",
+          "source": "synthetic-example",
+          "detail": "虚构演示，不含实际项目坐标或文件；用于验证表格及解析流程"
+        }
+      ]
+    }
+  ]
+}

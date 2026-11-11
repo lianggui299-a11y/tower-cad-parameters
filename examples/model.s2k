@@ -1,0 +1,39 @@
+TABLE:  "PROGRAM CONTROL"
+   ProgramName=SAP2000   CurrUnits="KN, m, C"
+
+TABLE:  "FRAME SECTION PROPERTIES 01 - GENERAL"
+   SectionName=DEMO_I_LABEL   Material=Q355   Shape="I/Wide Flange"   t3=0.6   t2=0.3   tf=0.02   tw=0.012 _
+       t2b=0.3   tfb=0.02   Area=0.01872
+   SectionName=DEMO_BOX_LABEL   Material=Q355   Shape=Box/Tube   t3=0.45   t2=0.45   tf=0.02   tw=0.02   Area=0.0344
+   SectionName=DEMO_FILLED_LABEL   Material=C40   Shape="SD Section"
+
+TABLE:  "SECTION DESIGNER PROPERTIES 01 - GENERAL"
+   SectionName=DEMO_FILLED_LABEL   BaseMat=C40   nTotalShp=2
+
+TABLE:  "SECTION DESIGNER PROPERTIES 09 - SHAPE BOX/TUBE"
+   SectionName=DEMO_FILLED_LABEL   ShapeName=TUBE   ShapeMat=Q355   XCenter=0   YCenter=0   Height=0.45   Width=0.45   FlngThick=0.02   WebThick=0.02   Rotation=0
+
+TABLE:  "SECTION DESIGNER PROPERTIES 12 - SHAPE SOLID RECTANGLE"
+   SectionName=DEMO_FILLED_LABEL   ShapeName=CORE   ShapeMat=C40   XCenter=0   YCenter=0   Height=0.41   Width=0.41   Rotation=0
+
+TABLE:  "JOINT COORDINATES"
+   Joint=N01   CoordSys=GLOBAL   CoordType=Cartesian   GlobalX=-5   GlobalY=0   GlobalZ=9
+   Joint=NM   CoordSys=GLOBAL   CoordType=Cartesian   GlobalX=0   GlobalY=0   GlobalZ=9
+   Joint=N02   CoordSys=GLOBAL   CoordType=Cartesian   GlobalX=5   GlobalY=0   GlobalZ=9
+   Joint=C0   CoordSys=GLOBAL   CoordType=Cartesian   GlobalX=1   GlobalY=1   GlobalZ=0
+   Joint=C1   CoordSys=GLOBAL   CoordType=Cartesian   GlobalX=1   GlobalY=1   GlobalZ=4.5
+   Joint=C2   CoordSys=GLOBAL   CoordType=Cartesian   GlobalX=1   GlobalY=1   GlobalZ=9
+
+TABLE:  "CONNECTIVITY - FRAME"
+   Frame=DEMO-F1   JointI=N01   JointJ=NM   IsCurved=No
+   Frame=DEMO-F2   JointI=N02   JointJ=NM   IsCurved=No
+   Frame=DEMO-C1   JointI=C0   JointJ=C1   IsCurved=No
+   Frame=DEMO-C2   JointI=C1   JointJ=C2   IsCurved=No
+
+TABLE:  "FRAME SECTION ASSIGNMENTS"
+   Frame=DEMO-F1   AnalSect=DEMO_I_LABEL   MatProp=Default
+   Frame=DEMO-F2   AnalSect=DEMO_I_LABEL   MatProp=Default
+   Frame=DEMO-C1   AnalSect=DEMO_FILLED_LABEL   MatProp=Default
+   Frame=DEMO-C2   AnalSect=DEMO_BOX_LABEL   MatProp=Default
+
+END TABLE DATA
